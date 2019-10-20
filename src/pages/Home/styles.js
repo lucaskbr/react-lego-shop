@@ -22,7 +22,7 @@ export const ProductList = styled.ul`
       font-size: 16px;
       line-height: 20px;
       color: #333;
-      margin-top: 5px;
+      margin-top: 20px;
     }
 
     > span {
