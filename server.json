@@ -1,0 +1,66 @@
+{
+  "stock": [
+    {
+      "id": 1,
+      "amount": 3
+    },
+    {
+      "id": 2,
+      "amount": 5
+    },
+    {
+      "id": 3,
+      "amount": 2
+    },
+    {
+      "id": 4,
+      "amount": 1
+    },
+    {
+      "id": 5,
+      "amount": 5
+    },
+    {
+      "id": 6,
+      "amount": 10
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "title": "LEGO Green Lantern - DC Comics",
+      "price": 179.9,
+      "image": "https://i.imgur.com/7SB7yOn.png"
+    },
+    {
+      "id": 2,
+      "title": "LEGO Firefighter - LEGO City",
+      "price": 139.9,
+      "image": "https://i.imgur.com/dlCYAbi.png"
+    },
+    {
+      "id": 3,
+      "title": "LEGO Riddler - DC Comics",
+      "price": 219.9,
+      "image": "https://i.imgur.com/9XI7td0.png"
+    },
+    {
+      "id": 5,
+      "title": "LEGO Emmet - LEGO Movie",
+      "price": 139.9,
+      "image": "https://i.imgur.com/hwbjoaK.png"
+    },
+    {
+      "id": 6,
+      "title": "LEGO Joker - DC Comics",
+      "price": 219.9,
+      "image": "https://i.imgur.com/OYUmkK6.png"
+    },
+    {
+      "id": 4,
+      "title": "LEGO Rex Dangervest - LEGO Movie",
+      "price": 179.9,
+      "image": "https://i.imgur.com/prlzsVY.png"
+    }
+  ]
+}
