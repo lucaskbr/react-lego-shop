@@ -11,13 +11,13 @@ import * as CartActions from '../../store/modules/cart/actions';
 
 import { Container, ProductTable, Total } from './styles';
 
-function Cart({ dispatch, cart, total, removeFromCart, updateAmount }) {
+function Cart({ dispatch, cart, total, removeFromCart, updateAmountRequest }) {
   function incrementAmount(product) {
-    updateAmount(product.id, product.amount + 1);
+    updateAmountRequest(product.id, product.amount + 1);
   }
 
   function decreamentAmount(product) {
-    updateAmount(product.id, product.amount - 1);
+    updateAmountRequest(product.id, product.amount - 1);
   }
 
   return (
