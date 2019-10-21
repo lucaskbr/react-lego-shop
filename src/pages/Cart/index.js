@@ -1,15 +1,23 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
   MdRemoveCircleOutline,
   MdAddCircleOutline,
   MdDelete,
+  MdRemoveShoppingCart,
 } from 'react-icons/md';
 import { formatPrice } from '../../util/format';
 import * as CartActions from '../../store/modules/cart/actions';
 
-import { Container, ProductTable, Total } from './styles';
+import {
+  Container,
+  EmptyCart,
+  BackButton,
+  ProductTable,
+  Total,
+} from './styles';
 
 function Cart({ dispatch, cart, total, removeFromCart, updateAmountRequest }) {
   function incrementAmount(product) {
@@ -22,64 +30,77 @@ function Cart({ dispatch, cart, total, removeFromCart, updateAmountRequest }) {
 
   return (
     <Container>
-      <ProductTable>
-        <thead>
-          <tr>
-            <th />
-            <th>PRODUCT</th>
-            <th>QUANTITY</th>
-            <th>SUBTOTAL</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cart.map(product => (
-            <tr>
-              <td>
-                <img src={product.image} alt={product.title} />
-              </td>
-              <td>
-                <strong>{product.title}</strong>
-                <strong>R$129,90</strong>
-              </td>
-              <td>
-                <div>
-                  <button
-                    type="button"
-                    onClick={() => decreamentAmount(product)}
-                  >
-                    <MdRemoveCircleOutline size={20} color="#eb2757" />
-                  </button>
-                  <input type="number" readOnly value={product.amount} />
-                  <button
-                    type="button"
-                    onClick={() => incrementAmount(product)}
-                  >
-                    <MdAddCircleOutline size={20} color="#eb2757" />
-                  </button>
-                </div>
-              </td>
-              <td>
-                <strong>{product.subtotal}</strong>
-              </td>
-              <td>
-                <button
-                  type="button"
-                  onClick={() => removeFromCart(product.id)}
-                >
-                  <MdDelete size={20} color="#eb2757" />
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </ProductTable>
-      <footer>
-        <button type="button">Go to checkout</button>
-        <Total>
-          <span>TOTAL:</span>
-          <strong>{total}</strong>
-        </Total>
-      </footer>
+      {cart.length <= 0 ? (
+        <EmptyCart>
+          <div>
+            <MdRemoveShoppingCart size={120} color="#eee" />
+          </div>
+          <h3>Sorry, you have nothing in your cart to proceed</h3>
+          <BackButton to="/">Back to shop</BackButton>
+        </EmptyCart>
+      ) : (
+        <>
+          <ProductTable>
+            <thead>
+              <tr>
+                <th />
+                <th>PRODUCT</th>
+                <th>QUANTITY</th>
+                <th>SUBTOTAL</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cart.map(product => (
+                <tr>
+                  <td>
+                    <img src={product.image} alt={product.title} />
+                  </td>
+                  <td>
+                    <strong>{product.title}</strong>
+                    <strong>R$129,90</strong>
+                  </td>
+                  <td>
+                    <div>
+                      <button
+                        type="button"
+                        onClick={() => decreamentAmount(product)}
+                      >
+                        <MdRemoveCircleOutline size={20} color="#eb2757" />
+                      </button>
+                      <input type="number" readOnly value={product.amount} />
+                      <button
+                        type="button"
+                        onClick={() => incrementAmount(product)}
+                      >
+                        <MdAddCircleOutline size={20} color="#eb2757" />
+                      </button>
+                    </div>
+                  </td>
+                  <td>
+                    <strong>{product.subtotal}</strong>
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      onClick={() => removeFromCart(product.id)}
+                    >
+                      <MdDelete size={20} color="#eb2757" />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </ProductTable>
+
+          <footer>
+            <button type="button">Go to checkout</button>
+            <Total>
+              <span>TOTAL:</span>
+              <strong>{total}</strong>
+            </Total>
+          </footer>
+        </>
+      )}
     </Container>
   );
 }

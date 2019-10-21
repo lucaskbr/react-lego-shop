@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   padding: 30px;
@@ -26,6 +27,34 @@ export const Container = styled.div`
         background: ${darken(0.03, '#eb2757')};
       }
     }
+  }
+`;
+
+export const EmptyCart = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h3 {
+    margin: 20px;
+  }
+`;
+
+export const BackButton = styled(Link)`
+  background: #eb2757;
+  color: #fff;
+  text-decoration: none;
+  border: 0;
+  border-radius: 4px;
+  padding: 12px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background 0.2s;
+
+  &:hover {
+    background: ${darken(0.03, '#eb2757')};
   }
 `;
 
